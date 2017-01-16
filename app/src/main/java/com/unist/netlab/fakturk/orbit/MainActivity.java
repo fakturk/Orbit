@@ -18,16 +18,25 @@ public class MainActivity extends AppCompatActivity {
         bigCircleView = (BigCircleView) findViewById(R.id.bigCircleView);
         smallCircleView = (SmallCircleView) findViewById(R.id.smallCircleView);
         targetCircleView = (TargetCircleView) findViewById(R.id.targetView);
-        Timer t=new Timer();
-        TimerTask task = new TimerTask() {
+
+
+        TimerTask myTimerTask = new TimerTask() {
             @Override
             public void run() {
-                smallCircleView.setTheta(smallCircleView.getTheta()+10);
-//                smallCircleView.invalidate();
+                // Update logic here
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Drawing logic here
+                        smallCircleView.setTheta(smallCircleView.getTheta()+10);
+
+                    }
+                });
             }
         };
-//        t.schedule(task, 0, 20);
-        t.scheduleAtFixedRate(task,0,1);
+        Timer timer = new Timer();
+        timer.schedule(myTimerTask, 10, 50);
 
     }
 }

@@ -57,7 +57,7 @@ public class SmallCircleView extends View {
     void setTheta(float theta)
     {
         this.theta = theta;
-//        this.invalidate();
+        this.invalidate();
     }
 
     public float getTheta() {
